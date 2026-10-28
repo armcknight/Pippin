@@ -22,6 +22,10 @@
 - `InfoViewController` shows the git branch on its own line under the version,
   and wraps long branch names at `/`, `-`, `_` and `.` instead of running off
   the screen.
+- CI builds and tests the package on every pull request and every push to
+  `master`, via the reusable `swift-package-ci` workflow in
+  `armcknight/workflows`. CI and release both pass `secrets: inherit`, so the
+  shared workflows can notify mcknight.io of a merge or a release.
 
 ## [13.0.1] 2026-05-02
 

@@ -1,0 +1,22 @@
+name: CI
+
+# Builds and tests the package on every pull request and every merge, by
+# delegating to armcknight/workflows' reusable SwiftPM pipeline at the same major
+# alias the release workflow uses.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  ci:
+    uses: armcknight/workflows/.github/workflows/swift-package-ci.yml@2
+    with:
+      # swift-armcknight is a path-based SwiftPM dependency vendored as a
+      # submodule, so the build needs it checked out.
+      submodules: true
+    # The shared workflow's notify step, which refreshes mcknight.io's projects
+    # page on a merge, needs a token from this repository's secrets.
+    secrets: inherit
