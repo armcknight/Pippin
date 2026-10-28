@@ -25,3 +25,6 @@ jobs:
     permissions:
       contents: write
     uses: armcknight/workflows/.github/workflows/github-release.yml@2
+    # The shared workflow's notify step, which refreshes mcknight.io's projects
+    # page on a release, needs a token from this repository's secrets.
+    secrets: inherit
